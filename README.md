@@ -2,7 +2,7 @@
 This program isn't anything special, just an attempt at writing a generic
 $n$-body simulation in Julia. The only thing I'm doing differently is
 implementing Hamilton's equations of motion rather than Newton's equations of
-motion.
+motion. There's still much [to do](TODO.md), so check back later.
 
 I think it's worth noting this is a hobby project to improve my lackluster
 programming skills—if you're looking for serious software, I would highly
