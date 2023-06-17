@@ -23,7 +23,7 @@ function simulation(N::Int64, dt::Float64 = 0.1, steps::Int64 = 20)
     box = Container(20., 20.)
     #println( totalPotential(particles) )
     #totalPotential(particles)
-    
+    timeEvolution = Array{Particle}[]
     for i in 1:steps
         x = [motion(q) for q in particles]
         for particle in particles
@@ -33,7 +33,10 @@ function simulation(N::Int64, dt::Float64 = 0.1, steps::Int64 = 20)
             else
             end
         end
-        println(x) # we have motion!
+        #println(particles)
     end
+
+    println(timeEvolution)
+
 
 end
