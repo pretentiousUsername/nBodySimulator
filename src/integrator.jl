@@ -16,7 +16,7 @@
 # dt   m
 # Therefore, using a basic finite-difference scheme
 # pᵢ = pᵢ₋₁ - (Vᵢ - Vᵢ₋₁) δt / xᵢ₋₁
-# xᵢ = xᵢ₋₁ + pᵢ₋₁ δt / m
+# xᵢ = xᵢ₋₁ + pᵢ δt / m
 =#
 
 # This is just a test function right now.
