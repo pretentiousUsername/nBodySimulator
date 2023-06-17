@@ -7,7 +7,7 @@ end
 function totalPotential(particles::Array{Particle})
     potential = [begin
                      if sameParticle(q₁, q₂)
-                         [0., 0.]
+                         zeros(length(q₁.position))
                      else
                          interparticlePotential(q₁, q₂)
                      end

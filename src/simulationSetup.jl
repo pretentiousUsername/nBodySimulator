@@ -1,6 +1,13 @@
+#=
+# This is just a random function for testing purposes.
+=#
+function randomFunk()
+    return [rand(Float64) for i in 1:2]
+end
+
 function particleList(number::Int64 = 1, mass::Float64 = 0.5)
     pos = [[-1., 0.], [1., 0.]]
-    return [Particle(pos[i], pos[i], mass, i) for i in 1:number]
+    return [Particle(randomFunk(), randomFunk(), mass, i) for i in 1:number]
 end
 
 function containerCoordinates(box::Container)
