@@ -12,8 +12,8 @@ end
 
 function distanceBetweenParticles(q₁::Particle, q₂::Particle)
     positions = [x₁ - x₂ for x₁ in q₁.position, x₂ in q₂.position]
-    distance = sqrt.(sum(positions.^2))
-    return distance
+    println(q₁.position)
+    return positions
 end
 
 # Feel free to season this to taste---use any potential you feel like.

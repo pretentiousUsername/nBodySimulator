@@ -1,4 +1,4 @@
-struct Particle
+mutable struct Particle
     position::Array{Float64}
     momentum::Array{Float64}
     mass::Float64

@@ -21,7 +21,7 @@ function outOfBounds(q::Particle, coordinates)
     x = q.position
     dx = q.momentum ./ q.mass
 
-    if abs(x) ≥ coordinates || abs(x + dx) ≥ coordinates
+    if abs(x) ≥ coordinates
         return true
     else
         return false
