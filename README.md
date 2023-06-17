@@ -25,3 +25,7 @@ This program uses the [MIT license](LICENSE).
 I think it's a noble goal—and for a modern, high-level language like Julia,
 Python, or something else like that, it is *somewhat* achievable—but I still
 believe programs should have actual documentation.
+
+[sciml]: https://github.com/SciML/NBodySimulator.jl
+
+[ds]: https://juliadynamics.github.io/DynamicalSystems.jl/dev/ 
