@@ -20,6 +20,7 @@ end
 
 function simulation(N::Int64, dt::Float64 = 0.1, steps::Int64 = 20)
     particles = particleList(N)
+    box = Container(20., 20.)
     #println( totalPotential(particles) )
     #totalPotential(particles)
     
@@ -27,6 +28,10 @@ function simulation(N::Int64, dt::Float64 = 0.1, steps::Int64 = 20)
         x = [motion(q) for q in particles]
         for particle in particles
             particle.position = x[particle.label]
+            if outOfBounds(particle, box)
+                particle.momentum = -particle.momentum
+            else
+            end
         end
         println(x) # we have motion!
     end

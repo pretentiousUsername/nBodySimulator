@@ -17,11 +17,11 @@ function containerCoordinates(box::Container)
     return [X, Y]
 end
 
-function outOfBounds(q::Particle, coordinates)
+function outOfBounds(q::Particle, box::Container)
     x = q.position
-    dx = q.momentum ./ q.mass
+    coordinates = containerCoordinates(box)
 
-    if abs(x) ≥ coordinates
+    if abs.(x) ≥ coordinates
         return true
     else
         return false
