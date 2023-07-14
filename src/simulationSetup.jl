@@ -1,6 +1,5 @@
-# Random bullshit, go!
 function randomFunk()
-    return [rand(Float64) for i in 1:2]
+    return [rand(Float64) for i in 1:1]
 end
 
 function particleList(number::Int64 = 1, mass::Float64 = 0.5)

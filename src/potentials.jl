@@ -22,8 +22,8 @@ function harmonicOscillator(q₁::Particle, q₂::Particle, k::Float64)
 end
 
 
-function interparticleForce(q₁::Particle, q₂::Particle, param = nothing)
+function interparticleForce(q₁::Particle, q₂::Particle, param::Float64 = 0.5)
     #return coloumbForce(q₁, q₂)
     #return yukawaForce(q₁, q₂, param)
-    return harmonicOscillator(q₁, q₂)
+    return harmonicOscillator(q₁, q₂, param)
 end

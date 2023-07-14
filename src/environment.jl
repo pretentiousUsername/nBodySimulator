@@ -1,6 +1,6 @@
 mutable struct Particle
-    position::Array{Float64}
-    momentum::Array{Float64}
+    position::Vector{Float64}
+    momentum::Vector{Float64}
     mass::Float64
     label::Int64
 end

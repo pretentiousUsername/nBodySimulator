@@ -4,4 +4,5 @@ include("potentials.jl") # potentials for interactions between particles
 include("simulationSetup.jl") # set up particles for the simulation 
 include("integrator.jl")
 
-#simulation(2)
+#println(particleList(2))
+println(simulation(2))
