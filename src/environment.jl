@@ -11,12 +11,12 @@ end
 
 function containerCoordinates(box::Container)
     dims = length(box.dimensions)
-    coordinates = [box.dimensions[i] / 2 for i in 1:dims]
+    coordinates = [box.dimensions[i] for i in 1:dims]
 
     return coordinates
 end
 
-function outOfBounds(q::Particle, box::Container, cushion::Float64 = 0.01)
+function outOfBounds(q::Particle, box::Container, cushion::Float64 = 0.1)
     x = q.position
     coordinates = containerCoordinates(box)
     origin = zeros(length(q.position))
@@ -28,7 +28,7 @@ function outOfBounds(q::Particle, box::Container, cushion::Float64 = 0.01)
     end
 end
 
-function backInBounds(q::Particle, box::Container, cushion::Float64 = 0.01)
+function backInBounds(q::Particle, box::Container, cushion::Float64 = 0.1)
     x = q.position
     boxCoords = containerCoordinates(box)
     dims = 1:length(x)

@@ -40,9 +40,9 @@ end
 
 
 function interparticleForce(q₁::Particle, q₂::Particle, param::Float64 = 0.5)
-    return noInteractions(q₁, q₂)
+    #return noInteractions(q₁, q₂)
     #return coulombForce(q₁, q₂)
-    #return yukawaForce(q₁, q₂, 0.25 * param)
+    return yukawaForce(q₁, q₂, 100. * param)
     #return harmonicOscillator(q₁, q₂, 100. * param)
     #return gaussianForce(q₁, q₂, 0.00000001 * param)
     #return 0.1 * yukawaForce(q₁, q₂, 0.125 * param) + harmonicOscillator(q₁, q₂, 100. * param)

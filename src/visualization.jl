@@ -15,7 +15,7 @@ if dimensions == 2
 
 elseif dimensions == 1
 
-    yAxis = [0.5 for i ∈ 1:length(coords)]
+    yAxis = [1.0 for i ∈ 1:length(coords)]
 
     animation = @animate for i in 1:length(coords)
         scatter(coords[i], yAxis,
