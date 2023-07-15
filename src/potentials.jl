@@ -9,7 +9,7 @@ end
 function yukawaForce(q₁::Particle, q₂::Particle, ℓ₀::Float64)
     g₀::Float64 = 1. / (4π)
     r = distanceBetweenParticles(q₁, q₂)
-    F = @. g₀ * exp(-r / ℓ₀) * (ℓ₀ - r) / (L * r^2)
+    F = @. g₀ * exp(-r / ℓ₀) * (ℓ₀ - r) / (ℓ₀ * r^2)
     return F
 end
 
@@ -23,7 +23,7 @@ end
 
 
 function interparticleForce(q₁::Particle, q₂::Particle, param::Float64 = 0.5)
-    #return coloumbForce(q₁, q₂)
-    #return yukawaForce(q₁, q₂, param)
-    return harmonicOscillator(q₁, q₂, param)
+    #return coulombForce(q₁, q₂)
+    return yukawaForce(q₁, q₂, param)
+    #return harmonicOscillator(q₁, q₂, param)
 end

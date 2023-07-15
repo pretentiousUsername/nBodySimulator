@@ -8,16 +8,15 @@ end
 function totalForce(q::Particle, list::Vector{Particle})
     mutualInteraction = [begin
                              if sameParticle(q, particle)
-                                 zeros(length(q.position))
+                                 [0. for i in 1:length(q.position)] # I could just use zeros()
                              else
                                  interparticleForce(q, particle)
                              end
                          end for particle in list]
+    mutualInteraction = sum(mutualInteraction)
+    #println(mutualInteraction)
 
-    #println(typeof(mutualInteraction))
-    println(mutualInteraction)
-
-    return sum(mutualInteraction)
+    return mutualInteraction
 end
 
 function momentumStep(particle::Particle, list::Vector{Particle}, dt::Float64)
@@ -29,8 +28,8 @@ function timeStep(particles::Vector{Particle}, dt::Float64)
     step::Vector{Particle} = []
     for particle in particles
         x = positionStep(particle, dt)
-        #p = momentumStep(particle, particles, dt)
-        p = particle.momentum # temporary
+        p = momentumStep(particle, particles, dt)
+        #p = particle.momentum # temporary
         m = particle.mass
         i = particle.label
         newParticle = Particle(x, p, m, i)
@@ -45,13 +44,14 @@ end
 #=
 # I need to find a way to make the positions actually update consistently
 =#
-function simulation(N::Int64, dt::Float64 = 0.1, steps::Int64 = 20)
+function simulation(N::Int64, dt::Float64 = 0.01, steps::Int64 = 20)
     particles = particleList(N)
     #timeSteps = timeStep(particles, dt)
     timeSteps = [begin
                  particles = timeStep(particles, dt)
              end for step in 1:steps]
 
-    println(particles)
+    #timeSteps = totalForce(particles[1], particles)
+    println(timeSteps)
     return timeSteps
 end

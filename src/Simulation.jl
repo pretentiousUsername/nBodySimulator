@@ -5,4 +5,4 @@ include("simulationSetup.jl") # set up particles for the simulation
 include("integrator.jl")
 
 #println(particleList(2))
-println(simulation(2))
+simulation(2)

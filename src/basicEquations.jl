@@ -11,8 +11,8 @@ function kineticEnergy(q::Particle)
 end
 
 function distanceBetweenParticles(q₁::Particle, q₂::Particle)
-    positions = [r₁ - r₂ for r₁ in q₁.position, r₂ in q₂.position]
-    # println(q₁.position)
-    return positions
+    dims = length(q₁.position) # assumes q₁ and q₂ have the same length
+    r = [q₁.position[i] - q₂.position[i] for i in 1:dims]
+    return r
 end
 
