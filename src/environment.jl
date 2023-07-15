@@ -27,16 +27,24 @@ function outOfBounds(q::Particle, box::Container)
     end
 end
 
-function backInBounds(q::Particle, box::Container)
-    x = q.position
+function backInBounds(q::Vector{Float64}, box::Container)
     boxCoords = containerCoordinates(box)
-    dims = length(q.position)
+    qAbs = abs.(q)
+    dims = length(q)
 
-    newCoords = [if abs(x[i]) ≥ boxCoords[i] boxCoords[i] - x[i]
-                 else x[i]
-                 end for i in 1:dims]
+    newPosition = [begin
+                       if abs(q[i]) ≥ boxCoords[i]
+                           if q[i] ≥ 1.
+                               q[i] - boxCoords[i]
+                           else
+                               boxCoords[i] - q[i]
+                           end
+                       else
+                           q[i]
+                       end
+                   end for i in 1:dims]
     
-    return newCoords
+    return newPosition
 end
 
 function sameParticle(q₁::Particle, q₂::Particle)
