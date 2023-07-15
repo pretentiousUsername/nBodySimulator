@@ -15,8 +15,7 @@ suggest you check out [SciML's `NBodySimulator.jl`][sciml], or the excellent
 likely be buggy, and may go without decent documentation—I'm also writing
 this program under a considerable creative restraint, using as little outside
 code as possible. (It sucks being separated from all of those really nice SciML
-packages.) As of right now—neglecting the `Manifest.toml` and `Project.toml`
-used to add in the [`Plots.jl`][plots] package—the code here is a svelte 5.3 kB.
+packages.)
 
 In the future, I *might* implement a routine for solving the Heisenberg
 equations of motion for particles, rather than Hamilton's equations, but

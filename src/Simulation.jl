@@ -6,11 +6,8 @@ include("integrator.jl") # simulate the system
 include("postProcessing.jl") # extract readable information from the simulation
 
 #println(particleList(2))
-particles = particleList(2)
-box = Container([20.0])
+particles = particleList(4)
+box = Container([1.0])
 sim = simulation(particles, box)
-
-println(getParticlePositions(sim))
-
 
 include("visualization.jl") # make the results viewable to humans

@@ -32,7 +32,7 @@ function backInBounds(q::Particle, box::Container)
     boxCoords = containerCoordinates(box)
     dims = length(q.position)
 
-    newCoords = [if x[i] ≥ boxCoords[i] -x[i]
+    newCoords = [if abs(x[i]) ≥ boxCoords[i] boxCoords[i] - x[i]
                  else x[i]
                  end for i in 1:dims]
     
