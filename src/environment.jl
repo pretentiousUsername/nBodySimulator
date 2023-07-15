@@ -1,4 +1,4 @@
-mutable struct Particle
+mutable struct Particle # eventually I want to modify this for lattice stuff
     position::Vector{Float64}
     momentum::Vector{Float64}
     mass::Float64
@@ -16,33 +16,32 @@ function containerCoordinates(box::Container)
     return coordinates
 end
 
-function outOfBounds(q::Particle, box::Container)
+function outOfBounds(q::Particle, box::Container, cushion::Float64 = 0.01)
     x = q.position
     coordinates = containerCoordinates(box)
+    origin = zeros(length(q.position))
 
-    if abs.(x) ≥ coordinates
-        return true
-    else
+    if origin .+ cushion < abs.(x) < coordinates .- cushion
         return false
+    else
+        return true
     end
 end
 
-function backInBounds(q::Vector{Float64}, box::Container)
+function backInBounds(q::Particle, box::Container, cushion::Float64 = 0.01)
+    x = q.position
     boxCoords = containerCoordinates(box)
-    qAbs = abs.(q)
-    dims = length(q)
+    dims = 1:length(x)
 
-    newPosition = [begin
-                       if abs(q[i]) ≥ boxCoords[i]
-                           if q[i] ≥ 1.
-                               q[i] - boxCoords[i]
-                           else
-                               boxCoords[i] - q[i]
-                           end
-                       else
-                           q[i]
-                       end
-                   end for i in 1:dims]
+    #newPosition = x
+
+    newPosition = [if x[i] ≥ boxCoords[i]
+                       cushion
+                   elseif x[i] ≤ 0
+                       boxCoords[i] - cushion
+                   else
+                       x[i]
+                   end for i ∈ dims]
     
     return newPosition
 end
@@ -54,3 +53,12 @@ function sameParticle(q₁::Particle, q₂::Particle)
         return false
     end
 end
+
+
+# pmax = m * (container perimeter) / dt
+
+#=function maximumMomentum(q::Particle, box::Container, dt::Float64)
+    m = q.mass
+    P = containerCoordinates(box)
+    return m * P / dt
+end=#
