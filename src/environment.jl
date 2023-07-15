@@ -27,6 +27,18 @@ function outOfBounds(q::Particle, box::Container)
     end
 end
 
+function backInBounds(q::Particle, box::Container)
+    x = q.position
+    boxCoords = containerCoordinates(box)
+    dims = length(q.position)
+
+    newCoords = [if x[i] ≥ boxCoords[i] -x[i]
+                 else x[i]
+                 end for i in 1:dims]
+    
+    return newCoords
+end
+
 function sameParticle(q₁::Particle, q₂::Particle)
     if q₁.label == q₂.label
         return true

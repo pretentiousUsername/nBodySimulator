@@ -5,7 +5,8 @@ other similar projects. There's still much [to do](TODO.md), so check back
 later. This program can perform simulations in any arbitrary number of
 dimensions, which is quite cool, but I'm not sure if it's really important—if
 you're really into, say, gravity in 6 dimensions, you might really enjoy this
-program.
+program. Also, it's pretty easy to define any arbitrary force you might want,
+though I'm not sure if that's a feature in most other programs like this.
 
 I think it's worth noting this is a hobby project to improve my lackluster
 programming skills—if you're looking for serious software, I would highly

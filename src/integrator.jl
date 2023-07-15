@@ -12,7 +12,6 @@ function totalForce(q::Particle, list::Vector{Particle})
                              end
                          end for particle in list]
     mutualInteraction = sum(mutualInteraction)
-    #println(mutualInteraction)
 
     return mutualInteraction
 end
@@ -25,7 +24,7 @@ end
 function timeStep(particles::Vector{Particle}, box::Container, dt::Float64)
     step = [begin
                 if outOfBounds(particle, box)
-                    x = positionStep(particle, dt) - particle.position
+                    x = backInBounds(particle, box)
                 else
                     x = positionStep(particle, dt)
                 end
@@ -49,6 +48,5 @@ function simulation(particles::Vector{Particle}, box::Container, dt::Float64 = 0
                  particles = timeStep(particles, box, dt)
              end for step in 1:steps]
 
-    println(timeSteps)
     return timeSteps
 end
