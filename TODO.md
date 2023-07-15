@@ -11,3 +11,4 @@
   scheme.
 + Add in functionality for defining custom simulations rather than making a
   random list of particles.
++ Add in external forces that act on all particles.

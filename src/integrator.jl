@@ -23,21 +23,6 @@ function momentumStep(particle::Particle, list::Vector{Particle}, dt::Float64)
 end
 
 function timeStep(particles::Vector{Particle}, box::Container, dt::Float64)
-    #=step::Vector{Particle} = []
-    for particle in particles
-        if outOfBounds(particle, box)
-            x = positionStep(particle, dt) - particle.position
-        else
-            x = positionStep(particle, dt)
-        end
-
-        p = momentumStep(particle, particles, dt)
-        #p = particle.momentum # temporary
-        m = particle.mass
-        i = particle.label
-        newParticle = Particle(x, p, m, i)
-        push!(step, newParticle)
-    end=#
     step = [begin
                 if outOfBounds(particle, box)
                     x = positionStep(particle, dt) - particle.position
