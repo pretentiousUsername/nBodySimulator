@@ -1,6 +1,6 @@
 # An $n$-body simulator
 
-![The current state of this program.](img/currentState.gif)
+![The current state of this program.](src/aaaa.gif)
 
 This program isn't anything special, just an attempt at writing a generic
 $n$-body simulation in Julia. This doesn't really do much differently from
