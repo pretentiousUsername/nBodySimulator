@@ -3,8 +3,6 @@ function positionStep(particle::Particle, dt::Float64)
     return dx
 end
 
-# I need to rewrite this function to give the total force between all
-# particles in an an n-dimensional array
 function totalForce(q::Particle, list::Vector{Particle})
     mutualInteraction = [begin
                              if sameParticle(q, particle)
@@ -24,10 +22,15 @@ function momentumStep(particle::Particle, list::Vector{Particle}, dt::Float64)
     return dp
 end
 
-function timeStep(particles::Vector{Particle}, dt::Float64)
+function timeStep(particles::Vector{Particle}, box::Container, dt::Float64)
     step::Vector{Particle} = []
     for particle in particles
-        x = positionStep(particle, dt)
+        if outOfBounds(particle, box)
+            x = positionStep(particle, dt) - particle.position
+        else
+            x = positionStep(particle, dt)
+        end
+
         p = momentumStep(particle, particles, dt)
         #p = particle.momentum # temporary
         m = particle.mass
@@ -44,14 +47,11 @@ end
 #=
 # I need to find a way to make the positions actually update consistently
 =#
-function simulation(N::Int64, dt::Float64 = 0.01, steps::Int64 = 20)
-    particles = particleList(N)
-    #timeSteps = timeStep(particles, dt)
+function simulation(particles::Vector{Particle}, box::Container, dt::Float64 = 0.001, steps::Int64 = 200)
     timeSteps = [begin
-                 particles = timeStep(particles, dt)
+                 particles = timeStep(particles, box, dt)
              end for step in 1:steps]
 
-    #timeSteps = totalForce(particles[1], particles)
     println(timeSteps)
     return timeSteps
 end

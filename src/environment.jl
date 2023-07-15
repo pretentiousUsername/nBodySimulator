@@ -6,15 +6,14 @@ mutable struct Particle
 end
 
 struct Container # rectangular container that particles are trapped in
-    length::Float64
-    width::Float64
+    dimensions::Vector{Float64}
 end
 
 function containerCoordinates(box::Container)
-    X = box.width / 2
-    Y = box.length / 2
+    dims = length(box.dimensions)
+    coordinates = [box.dimensions[i] / 2 for i in 1:dims]
 
-    return [X, Y]
+    return coordinates
 end
 
 function outOfBounds(q::Particle, box::Container)
