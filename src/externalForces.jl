@@ -16,5 +16,5 @@ end
 
 function externalForce(q::Particle, param::Float64 = 1.0)
     return noForce(q)
-    #return 10 .* stochastic(q, param)
+    #return stochastic(q, param)
 end

@@ -1,14 +1,17 @@
 function timeStep(particles::Vector{Particle}, box::Container, dt::Float64)
     step = [begin
-                if outOfBounds(particle, box)
+                #=if outOfBounds(particle, box)
+                    println(outOfBounds(particle, box))
                     x = backInBounds(particle, box)
-                else
+                else=#
                     x = positionStep(particle, dt)
-                end
-                p = momentumStep(particle, particles, dt)
+                #end
+                v = velocityStep(particle, dt)
+                a = accelerationStep(particle, particles, dt)
+                println(v)
                 m = particle.mass
                 i = particle.label
-                Particle(x, p, m, i)
+                Particle(x, v, a, m, i)
             end for particle in particles]
     return step
 end

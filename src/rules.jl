@@ -5,6 +5,14 @@ function containerCoordinates(box::Container)
     return coordinates
 end
 
+function distanceBetweenParticles(q₁::Particle, q₂::Particle)
+    dims = 1:length(q₁.position) # assumes q₁ and q₂ have the same length
+    x₁ = q₁.position
+    x₂ = q₂.position
+    r = [x₁[i] - x₂[i] for i ∈ dims]
+    return r
+end
+
 function outOfBounds(q::Particle, box::Container, cushion::Float64 = 0.1)
     x = q.position
     coordinates = containerCoordinates(box)

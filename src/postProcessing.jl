@@ -4,10 +4,10 @@ function getParticlePositions(timeSteps::Vector{Vector{Particle}})
     return position
 end
 
-function getParticleMomentums(timeSteps::Vector{Vector{Particle}})
-    momentum = [[particle.momentum for particle in particles]
+function getParticleVelocitys(timeSteps::Vector{Vector{Particle}})
+    velocity = [[particle.velocity for particle in particles]
                 for particles in timeSteps]
-    return momentum
+    return velocity
 end
 
 # This rat's nest took way too long to program
