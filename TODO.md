@@ -1,14 +1,10 @@
 # Stuff I need to work on
-+ Make `outOfBounds` deflect particles *before* they get stuck out of bounds;
-  look into making a periodic system too. (I'll need to factor in the time
-  resolution $\delta t$.)
-+ ~~Make a more robust integrator that uses functions and the like, rather than
-  a bunch of nested loops and if statements—I really wouldn't recommend you look
-  at [`integrator.jl`](src/integrator.jl) if you value your sanity.~~
-+ ~~Make an easier way to set up a simulation with various potentials.~~
-+ Consider changing the `positionStep` and `momentumStep` functions to use
-  a fourth-order Runge-Kutta method, rather than a simple finite difference
-  scheme.
 + Add in functionality for defining custom simulations rather than making a
   random list of particles.
-+ Add in external forces that act on all particles.
++ Rewrite the simulation code to allow for RK4 integrators.
++ Add a way to keep particles bound to a periodic environment (e.g. make it
+  so particles are incapable of escaping a container).[^1]
+
+[^1]: Perhaps making each axis (i.e. $x$, $y$, and $z$) a circle—rather than
+a straight line—could help with this. That would make the boundary periodic,
+and completely inescapable for a particle.
