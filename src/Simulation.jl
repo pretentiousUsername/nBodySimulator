@@ -1,4 +1,5 @@
-include("environment.jl") # particle and container properties
+include("objects.jl") # defines a particle and its environment
+include("rules.jl") # rules that particles must follow
 include("basicEquations.jl") # equations and stuff like that
 include("externalForces.jl") # forces acting on particles
 include("particleInteractions.jl") # interactions between particles
@@ -10,6 +11,6 @@ include("postProcessing.jl") # extract readable information from the simulation
 #println(particleList(2))
 particles = particleList(8)
 box = Container([1.0])
-sim = simulation(particles, box, 0.01, 800)
+sim = simulation(particles, box, 0.1, 800)
 
 include("visualization.jl") # make the results viewable to humans

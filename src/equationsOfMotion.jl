@@ -3,7 +3,7 @@ function positionStep(particle::Particle, dt::Float64)
     p = particle.momentum
     m = particle.mass
 
-    k₁ = p / m
+    k₁ = dt * p / m
     k₂ = (xⱼ + dt * k₁ / 2) / m # dt / 2
     k₃ = (xⱼ + dt * k₂ / 2) / m
     k₄ = (xⱼ + dt * k₃) / m
@@ -32,7 +32,7 @@ function momentumStep(particle::Particle, list::Vector{Particle}, dt::Float64)
     #dp = particle.momentum - dt * totalForce(particle, list)
     F = totalForce(particle, list)
 
-    k₁ = -F
+    k₁ = -F * dt
     k₂ = pⱼ + dt * k₁ / 2
     k₃ = pⱼ + dt * k₂ / 2
     k₄ = pⱼ + dt * k₃

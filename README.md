@@ -23,7 +23,10 @@ packages.)
 In the future, I *might* implement a routine for solving the Heisenberg
 equations of motion for particles, rather than Hamilton's equations, but
 that's a *big maybe*. There would be a lot of linear algebra involved, and
-I don't see a point in getting that involved for a hobby project.
+I don't see a point in getting that involved for a hobby project. Programming
+this has already been a lot of effort, in particular, it's been tempting to just
+use a library, instead of solving differential equations with my own code—it
+turns out, programming and physics are both quite hard.
 
 This program uses the [MIT license](LICENSE).
 

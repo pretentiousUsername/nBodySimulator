@@ -1,14 +1,3 @@
-mutable struct Particle # eventually I want to modify this for lattice stuff
-    position::Vector{Float64}
-    momentum::Vector{Float64}
-    mass::Float64
-    label::Int64
-end
-
-struct Container # rectangular container that particles are trapped in
-    dimensions::Vector{Float64}
-end
-
 function containerCoordinates(box::Container)
     dims = length(box.dimensions)
     coordinates = [box.dimensions[i] for i in 1:dims]
