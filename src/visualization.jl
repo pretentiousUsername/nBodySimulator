@@ -15,14 +15,14 @@ if dimensions == 2
 
 elseif dimensions == 1
 
-    yAxis = [1.0 for i ∈ 1:length(coords)]
+    yAxis = [0.5 for i ∈ 1:length(coords)]
 
     animation = @animate for i in 1:length(coords)
         scatter(coords[i], yAxis,
                 title = "The current state of this program",
                 legend = false,
                 xlims = (0, boxCoords[1]),
-                ylims = (0, 1))
+                ylims = (0, 1.0))
     end
 else
     println("Fuck off")

@@ -14,7 +14,7 @@ function randomGoop(dimensions)
     return p
 end
 
-dimensions = 2
+dimensions = 1
 function particleList(number::Int64 = 1, mass::Float64 = 10.0)
-    return [Particle(randomFunk(dimensions), 100 .* randomGoop(dimensions), mass, i) for i in 1:number]
+    return [Particle(randomFunk(dimensions), #=[0.0]=# #=10 .*=# randomGoop(dimensions), mass, i) for i in 1:number]
 end

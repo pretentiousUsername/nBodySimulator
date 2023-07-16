@@ -1,28 +1,3 @@
-function positionStep(particle::Particle, dt::Float64)
-    dx = particle.position + dt * particle.momentum / particle.mass
-    return dx
-end
-
-function totalForce(q::Particle, list::Vector{Particle})
-    externForce = externalForce(q)
-    mutualInteraction = [begin
-                             if sameParticle(q, particle)
-                                 zeros(length(q.position))
-                             else
-                                 interparticleForce(q, particle)
-                             end
-                         end for particle in list]
-    mutualInteraction = sum(mutualInteraction)
-    #println(mutualInteraction)
-
-    return mutualInteraction
-end
-
-function momentumStep(particle::Particle, list::Vector{Particle}, dt::Float64)
-    dp = particle.momentum - dt * totalForce(particle, list)
-    return dp
-end
-
 function timeStep(particles::Vector{Particle}, box::Container, dt::Float64)
     step = [begin
                 if outOfBounds(particle, box)
