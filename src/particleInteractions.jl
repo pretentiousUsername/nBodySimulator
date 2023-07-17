@@ -20,7 +20,7 @@ end
 function yukawaForce(q₁::Particle, q₂::Particle, ℓ₀::Float64)
     g₀::Float64 = 1. / (4π)
     r = distanceBetweenParticles(q₁, q₂)
-    F = @. g₀ * exp(-r / ℓ₀) * (ℓ₀ - r) * r/ (ℓ₀ * abs(r)^3)
+    F = @. - g₀ * exp(-r / ℓ₀) * (ℓ₀ + r) * r/ (ℓ₀ * abs(r)^3)
     return F
 end
 
