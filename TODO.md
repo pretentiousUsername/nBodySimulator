@@ -1,7 +1,8 @@
 # Stuff I need to work on
 + Add in functionality for defining custom simulations rather than making a
   random list of particles.
-+ Rewrite the simulation code to allow for RK4 integrators.
++ ~~Write a minimally working simulation.~~
++ Rewrite the simulation code to allow for RK4 and/or Verlet integrators.
 + ~~Add a way to keep particles bound to a periodic environment (e.g. make it
   so particles are incapable of escaping a container).~~[^1]
 
