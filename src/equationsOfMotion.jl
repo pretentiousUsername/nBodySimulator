@@ -36,7 +36,7 @@ end
 
 # This function might create some errors since not all particle positions are
 # getting updated at once.
-function rungeKuttaStep(q::Particle, list::Vector{Particle}, box::Container, dt::Float64)
+#=function rungeKuttaStep(q::Particle, list::Vector{Particle}, box::Container, dt::Float64)
     ak₁ = accelerationStep(q, list, box)
     vk₁ = velocityStep(ak₁, q, dt)
     θk₁ = positionStep(vk₁, q, dt)
@@ -61,4 +61,4 @@ function rungeKuttaStep(q::Particle, list::Vector{Particle}, box::Container, dt:
     θ = q.position + (θk₁ + 2θk₂ + 2θk₃ + θk₄) * dt / 6
 
     return [θ, v, a]
-end
+end=#

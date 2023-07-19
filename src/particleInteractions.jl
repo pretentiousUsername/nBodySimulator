@@ -21,7 +21,7 @@ function coulombForce(q₁::Particle, q₂::Particle, box::Container)
     g₀::Float64 = 1. #/ (4π)
     d₀::Float64 = 0.00001
     r = distanceBetweenParticles(q₁, q₂, box)
-    F = @. g₀ / sqrt(r^4 + d₀)
+    F = @. g₀ / r^2
     return F
 end
 

@@ -6,7 +6,7 @@ end
 # Particle struct. Also, stayOnCircle actually keeps particles on a semicircle,
 # but no one needs to know that.
 function stayOnCircle(position::Vector{Float64})
-    return [atan(sin(θ) / cos(θ)) for θ in position]
+    return [atan(sin(θ - π/2) / cos(θ - π/2)) + π/2 for θ in position]
 end
 
 struct Particle
