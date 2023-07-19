@@ -10,9 +10,10 @@ include("postProcessing.jl") # extract readable information from the simulation
 #println(particleList(2))
 #particles = particleList(1)
 particles = [Particle([-π + 0.5], [0.0], [0.0], 0.5, 1),
-             Particle([π - 0.5], [0.0], [0.0], 0.5, 2)]
+             Particle([π - 0.5], [0.0], [0.0], 0.5, 2)
+            ]
 box = Container([1.0])
-println(distanceBetweenParticles(particles[1], particles[2], box))
-#sim = simulation(particles, box, 0.25, 800)
+#println(distanceBetweenParticles(particles[1], particles[2], box))
+sim = simulation(particles, box, 0.01, 800)
 
-#include("visualization.jl") # make the results viewable to humans
+include("visualization.jl") # make the results viewable to humans

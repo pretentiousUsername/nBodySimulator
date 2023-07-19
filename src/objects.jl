@@ -16,7 +16,6 @@ struct Particle
     mass::Float64
     label::Int64
     
-    # While this *is* ugly, I'd prefer it to not having a line break
     Particle(position, velocity, acceleration, mass, label) = begin
         new(stayOnCircle(position), velocity, acceleration, mass, label) end
 end

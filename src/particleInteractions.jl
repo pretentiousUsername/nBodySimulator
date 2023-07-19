@@ -39,8 +39,8 @@ function harmonicOscillator(q₁::Particle, q₂::Particle, box::Container, k::F
 end
 
 function interparticleForce(q₁::Particle, q₂::Particle, box::Container, param::Float64 = 0.5)
-    force = noInteractions(q₁, q₂, box)
-    #force = coulombForce(q₁, q₂, box)
+    #force = noInteractions(q₁, q₂, box)
+    force = coulombForce(q₁, q₂, box)
     #force = yukawaForce(q₁, q₂, box, param)
     #force = harmonicOscillator(q₁, q₂, box, param)
     #force = gaussianForce(q₁, q₂, box, param)

@@ -18,4 +18,4 @@ function sameParticle(q₁::Particle, q₂::Particle)
 end
 
 # Use a Gaussian distribution to check if particles are next to each other
-#function isNearby(q₁::Particle, q₂::Particle, σ::Float64)
+#function particleCollision(q₁::Particle, q₂::Particle, σ::Float64)
