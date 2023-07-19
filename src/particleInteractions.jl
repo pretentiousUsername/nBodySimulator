@@ -34,7 +34,7 @@ end
 
 function gaussianForce(q₁::Particle, q₂::Particle, box::Container, ε::Float64)
     r = distanceBetweenParticles(q₁, q₂, box)
-    F = @. 2 * r * real(exp(-r^2 / ε))
+    F = @. 10 * real(exp(-r^2 / ε))
     return F
 end
 
@@ -52,7 +52,7 @@ function interparticleForce(q₁::Particle, q₂::Particle, box::Container, para
     force = coulombForce(q₁, q₂, box) .* direction
     #force = yukawaForce(q₁, q₂, box, 10. * param) * direction
     #force = harmonicOscillator(q₁, q₂, box, 10 * param)
-    #force = gaussianForce(q₁, q₂, box, param)
+    #force = gaussianForce(q₁, q₂, box, param/200)
     #force = hardSphereScattering(q₁, q₂, box, param)
     return force
 end

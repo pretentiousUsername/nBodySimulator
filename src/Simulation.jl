@@ -9,13 +9,28 @@ include("postProcessing.jl") # extract readable information from the simulation
 
 #println(particleList(2))
 #particles = particleList(1)
-particles = [Particle([-1.0], [0.0], [0.0], 0.5, 1),
+
+# 1d simulation
+particles = [Particle([-1.0], [0.25], [0.0], 0.5, 1),
              Particle([-0.5], [0.0], [0.0], 0.5, 2),
-             #Particle([0.001], [0.0], [0.0], 0.5, 3),
+             Particle([0.001], [0.0], [0.0], 0.5, 3),
              Particle([0.5], [0.0], [0.1], 0.5, 4),
+             Particle([1.0], [-0.1], [0.0], 0.5, 5),
+            ]
+
+box = Container([1.0])
+
+# 2d simulation
+#=
+particles = [Particle([-1.0, 0.5], [0.25, 0.0], [0.0, 0.0], 0.5, 1),
+             Particle([-0.5, 0.25], [0.0, 0.0], [0.0, 0.0], 0.5, 2),
+             #Particle([0.001], [0.0], [0.0], 0.5, 3),
+             Particle([0.5, 0.0], [0.0, 0.0], [0.1, 0.0], 0.5, 4),
              #Particle([1.0], [-0.1], [0.0], 0.5, 5),
             ]
-box = Container([1.0])
+
+box = Container([1.0, 1.0])
+=#
 #println(distanceBetweenParticles(particles[2], particles[3], box))
 sim = simulation(particles, box, 0.01, 800)
 

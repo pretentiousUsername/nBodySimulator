@@ -11,8 +11,8 @@ if dimensions == 2
         scatter(coords[i][1], coords[i][2],
         title = "The current state of this program",
         legend = false,
-        xlims = (-boxCoords[1], boxCoords[1]),
-        ylims = (-boxCoords[2], boxCoords[2]))
+        xlims = (0, π),
+        ylims = (0, π))
     end
 
 elseif dimensions == 1
