@@ -2,15 +2,16 @@
 using Plots
 
 coords = getParticleXYZ(sim)
-boxCoords = containerCoordinates(box)
+println(coords)
+boxCoords = box.radius
 
 if dimensions == 2
     animation = @animate for i in 1:length(coords)
         scatter(coords[i][1], coords[i][2],
         title = "The current state of this program",
         legend = false,
-        xlims = (0, boxCoords[1]),
-        ylims = (0, boxCoords[2]))
+        xlims = (-boxCoords[1], boxCoords[1]),
+        ylims = (-boxCoords[2], boxCoords[2]))
     end
 
 elseif dimensions == 1
@@ -21,7 +22,8 @@ elseif dimensions == 1
         scatter(coords[i], yAxis,
                 title = "The current state of this program",
                 legend = false,
-                xlims = (0, boxCoords[1]),
+                #xlims = (-boxCoords[1], boxCoords[1]),
+                xlims = (-π, π),
                 ylims = (0, 1.0))
     end
 else

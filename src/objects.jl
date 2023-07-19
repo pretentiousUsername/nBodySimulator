@@ -1,24 +1,22 @@
-struct Container # rectangular container that particles are trapped in
-    dimensions::Vector{Float64} # radii
+struct Container # particles are trapped on circles
+    radius::Vector{Float64} # radii
 end
 
-mutable struct Particle # eventually I want to modify this for lattice stuff
+# stayOnCircle should *technically* be in rules.jl, but I need it here for the
+# Particle struct. Also, stayOnCircle actually keeps particles on a semicircle,
+# but no one needs to know that.
+function stayOnCircle(position::Vector{Float64})
+    return [atan(sin(θ), cos(θ)) for θ in position]
+end
+
+struct Particle
     position::Vector{Float64}
     velocity::Vector{Float64}
     acceleration::Vector{Float64}
     mass::Float64
     label::Int64
     
-    #=function stayOnCircle(coordinates) # I'll hope this works
-        θ = [begin
-                 if 0 < ψ < 2π
-                     ψ
-                 elseif ψ ≥ 2π
-                    ψ * (1 - ψ / 2π)
-                 else
-                    ψ * (1 + ψ / 2π)
-                 end
-             end for ψ ∈ coordinates]
-        new(θ, velocity, acceleration, mass, label)
-    end=#
+    # While this *is* ugly, I'd prefer it to not having a line break
+    Particle(position, velocity, acceleration, mass, label) = begin
+        new(stayOnCircle(position), velocity, acceleration, mass, label) end
 end

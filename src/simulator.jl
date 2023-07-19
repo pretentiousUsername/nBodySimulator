@@ -1,5 +1,5 @@
 function timeStep(particles::Vector{Particle}, box::Container, dt::Float64)
-    step = [begin
+    step = [begin #=
                 #=if outOfBounds(particle, box)
                     println(outOfBounds(particle, box))
                     x = backInBounds(particle, box)
@@ -11,7 +11,9 @@ function timeStep(particles::Vector{Particle}, box::Container, dt::Float64)
                 println(v)
                 m = particle.mass
                 i = particle.label
-                Particle(x, v, a, m, i)
+                Particle(x, v, a, m, i)=#
+                Particle(particle.position .+ 0.1)
+
             end for particle in particles]
     return step
 end
