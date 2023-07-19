@@ -9,7 +9,7 @@ include("postProcessing.jl") # extract readable information from the simulation
 
 #println(particleList(2))
 #particles = particleList(1)
-particles = [Particle([-π + 0.5], [0.0], [0.0], 0.5, 1),
+particles = [Particle([-π + 0.5], [1.0], [0.0], 0.5, 1),
              Particle([π - 0.5], [0.0], [0.0], 0.5, 2)
             ]
 box = Container([1.0])

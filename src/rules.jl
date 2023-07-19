@@ -5,6 +5,7 @@ function distanceBetweenParticles(q₁::Particle, q₂::Particle, box::Container
     x₂ = q₂.position
     r = box.radius
     θ = stayOnCircle([x₁[i] - x₂[i] for i ∈ dims])
+    #θ = [x₁[i] - x₂[i] for i ∈ dims]
     s = r .* θ
     return s
 end
