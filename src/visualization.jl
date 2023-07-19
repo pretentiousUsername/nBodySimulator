@@ -2,8 +2,9 @@
 using Plots
 
 coords = getParticleXYZ(sim)
-println(coords)
-boxCoords = box.radius
+r = box.radius
+
+dimensions = length(r)
 
 if dimensions == 2
     animation = @animate for i in 1:length(coords)
@@ -23,13 +24,13 @@ elseif dimensions == 1
                 title = "The current state of this program",
                 legend = false,
                 #xlims = (-boxCoords[1], boxCoords[1]),
-                xlims = (-π, π),
+                xlims = (-π / 2, π / 2),
+                #xlims = (0, 2π),
                 ylims = (0, 1.0))
     end
 else
     println("Fuck off")
 end
-
 
 gif(animation, "aaaa.gif", fps = 30)
 

@@ -13,9 +13,9 @@ end
 # This rat's nest took way too long to program
 function getParticleXYZ(timeSteps::Vector{Vector{Particle}})
     steps = getParticlePositions(timeSteps)
-    dims = length(steps[1][1])
+    dims = 1:length(steps[1][1])
     xyz = [[[position[i] for position in positions]
-            for i ∈ 1:dims]
+            for i ∈ dims]
            for positions in steps]
     return xyz
 end

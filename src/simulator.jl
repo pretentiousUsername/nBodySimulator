@@ -1,10 +1,10 @@
 function timeStep(particles::Vector{Particle}, box::Container, dt::Float64)
     step = [begin
                 #a = accelerationStep(particle, particles, box, dt)
-                #=a = accelerationStep(particle, particles, box)
+                a = accelerationStep(particle, particles, box)
                 v = velocityStep(a, particle, dt)
-                x = positionStep(v, particle, dt)=#
-                x, v, a = rungeKuttaStep(particle, particles, box, dt)
+                x = positionStep(v, particle, dt)
+                #x, v, a = rungeKuttaStep(particle, particles, box, dt)
                 m = particle.mass
                 i = particle.label
                 Particle(x, v, a, m, i)
