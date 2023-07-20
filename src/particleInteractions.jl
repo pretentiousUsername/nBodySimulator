@@ -18,7 +18,7 @@ function normalizeDirection(q₁::Particle, q₂::Particle, box::Container)
 end
 
 function coulombForce(q₁::Particle, q₂::Particle, box::Container)
-    g₀::Float64 = 1. #/ (4π)
+    g₀::Float64 = 0.5 #1. #/ (4π)
     d₀::Float64 = 0.00001
     r = distanceBetweenParticles(q₁, q₂, box)
     F = @. g₀ / r^2
@@ -47,12 +47,13 @@ function harmonicOscillator(q₁::Particle, q₂::Particle, box::Container, k::F
 end
 
 function interparticleForce(q₁::Particle, q₂::Particle, box::Container, param::Float64 = 0.5)
+    scaleFactor = 1. #/ length(box.radius)
     #force = noInteractions(q₁, q₂, box)
     direction = normalizeDirection(q₁, q₂, box)
-    force = coulombForce(q₁, q₂, box) .* direction
-    #force = yukawaForce(q₁, q₂, box, 10. * param) * direction
+    #force = coulombForce(q₁, q₂, box) .* direction
+    force = yukawaForce(q₁, q₂, box, 10. * param) .* direction
     #force = harmonicOscillator(q₁, q₂, box, 10 * param)
     #force = gaussianForce(q₁, q₂, box, param/200)
     #force = hardSphereScattering(q₁, q₂, box, param)
-    return force
+    return scaleFactor .* force
 end

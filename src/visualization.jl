@@ -34,6 +34,7 @@ else
 end
 
 gif(animation, "aaaa.gif", fps = 30)
+#mp4(animation, "bbbb.mp4", fps = 30)
 
 #scatter(coords[1][1], coords[1][2], label="aaaaa", legend=false)
 #savefig("aaaaa.png")
