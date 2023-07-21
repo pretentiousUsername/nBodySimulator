@@ -33,8 +33,8 @@ else
     println("Fuck off")
 end
 
-gif(animation, "aaaa.gif", fps = 30)
-#mp4(animation, "bbbb.mp4", fps = 30)
+gif(animation, "aaaa.gif", fps = 60)
+mp4(animation, "bbbb.mp4", fps = 60)
 
 #scatter(coords[1][1], coords[1][2], label="aaaaa", legend=false)
 #savefig("aaaaa.png")

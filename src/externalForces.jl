@@ -31,7 +31,7 @@ end
 
 function externalForce(q::Particle, param::Float64 = 1.0)
     #return noForce(q)
-    return stochastic(q, param * 5)
-    #return spring(q, 10 * param, param * π / 2)
+    #return stochastic(q, param * 5)
+    return spring(q, 10 * param, param * π / 2)
     #return stinky(q, param)
 end
